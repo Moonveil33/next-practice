@@ -1,0 +1,17 @@
+@import "tailwindcss";
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1{
+  color: purple;
+  font-size: 3.5rem;
+}
+
+.text {
+  color: green;
+}
