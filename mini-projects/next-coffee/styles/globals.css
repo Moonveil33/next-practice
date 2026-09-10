@@ -589,7 +589,7 @@ pre code {
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  content: "next";
+  content: "";
   font-size: 24px !important;
   color: gray;
   font-weight: 900;
