@@ -13,4 +13,16 @@ function Home() {
   );
 }
 
+export async function getStaticProps() {
+  const res = await fetch("");
+
+  return {
+    props: {
+      data: {
+        services: "",
+      },
+    },
+  };
+}
+
 export default Home;
