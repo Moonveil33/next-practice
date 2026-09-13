@@ -1,7 +1,7 @@
 {
   "menu": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Black Coffee",
       "description": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "price": 8,
@@ -9,7 +9,7 @@
       "off": 0
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "chocolate Coffee",
       "description": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "price": 7,
@@ -19,28 +19,28 @@
   ],
   "services": [
     {
-      "id": 1,
+      "id": "1",
       "title": "faster door delivery",
       "img": "/images/service-1.jpg",
       "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faTruck"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "url id is my own",
       "img": "/images/service-2.jpg",
       "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faCoffee"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Best Quality coffee",
       "img": "/images/service-3.jpg",
       "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faAward"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Online Table Booking",
       "img": "/images/service-4.jpg",
       "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
@@ -49,28 +49,33 @@
   ],
   "newsLetters": [
     {
-      "id": 1,
+      "id": "1",
       "email": "amin@gmail.com"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "qadir@gmail.com"
+    },
+    {
+      "email": "andromedaa5692@gmail.com",
+      "id": "SpNCaA6vP30"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "username": "Q_Yolme",
       "body": "perfect coffee",
       "productId": 1,
       "score": 5
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "amin_saeedi",
       "body": "oh my god coffee",
       "productId": 2,
       "score": 4.5
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
