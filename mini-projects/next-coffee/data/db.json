@@ -27,10 +27,24 @@
     },
     {
       "id": 2,
-      "title": "faster door delivery",
+      "title": "url id is my own",
       "img": "/images/service-2.jpg",
       "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faCoffee"
+    },
+    {
+      "id": 3,
+      "title": "Best Quality coffee",
+      "img": "/images/service-3.jpg",
+      "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
+      "icon": "faAward"
+    },
+    {
+      "id": 4,
+      "title": "Online Table Booking",
+      "img": "/images/service-4.jpg",
+      "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
+      "icon": "faTable"
     }
   ],
   "newsLetters": [
