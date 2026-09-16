@@ -4,6 +4,7 @@ import React from "react";
 import Services from "@/components/templates/Index/Services";
 import Offer from "@/components/templates/Index/Offer";
 import Menu from "@/components/templates/Index/Menu";
+import Reservation from "@/components/templates/Index/Reservation";
 
 function Home({ data }) {
   return (
@@ -13,6 +14,7 @@ function Home({ data }) {
       <Services services={data.services} />
       <Offer />
       <Menu data={data.menu} />
+      <Reservation />
     </>
   );
 }
