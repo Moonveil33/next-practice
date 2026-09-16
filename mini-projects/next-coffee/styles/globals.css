@@ -589,7 +589,7 @@ pre code {
 
 .swiper-button-next:after,
 .swiper-button-prev:after {
-  content: "";
+  content: "next";
   font-size: 24px !important;
   color: gray;
   font-weight: 900;
@@ -7345,12 +7345,12 @@ h6,
 
 .overlay-top::before {
   top: -1px;
-  background: url(/overlay-top.png);
+  background: url(../public/images/overlay-top.png);
 }
 
 .overlay-bottom::after {
   bottom: -1px;
-  background: url(/overlay-bottom.png);
+  background: url(../public/images/overlay-bottom.png);
 }
 
 .section-title {
