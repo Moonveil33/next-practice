@@ -1,81 +1,155 @@
 {
   "menu": [
     {
-      "id": "1",
+      "id": 1,
       "title": "Black Coffee",
-      "description": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
-      "price": 8,
-      "img": "/images/menu-1.jpg",
-      "off": 0
+      "price": 5,
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "score": 5,
+      "off": 0,
+      "type": "cold",
+      "img": "/images/menu-1.jpg"
     },
     {
-      "id": "2",
-      "title": "chocolate Coffee",
-      "description": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
-      "price": 7,
-      "img": "/images/menu-2.jpg",
-      "off": 0
+      "id": 2,
+      "title": "Hot Chocolete",
+      "price": 4,
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "score": 4.4,
+      "off": 0,
+      "type": "hot",
+      "img": "/images/menu-2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Ice Cream",
+      "price": 6,
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "score": 4.9,
+      "off": 0,
+      "type": "cold",
+      "img": "/images/menu-3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Tea",
+      "price": 3,
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "score": 5,
+      "off": 0,
+      "type": "hot",
+      "img": "/images/menu-4.jpeg"
+    },
+    {
+      "id": 5,
+      "title": "Chocolate Milk",
+      "price": 4,
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "score": 4.8,
+      "off": 0,
+      "type": "hot",
+      "img": "/images/menu-5.jpeg"
+    },
+    {
+      "id": 6,
+      "title": "Banana Milk",
+      "price": 12,
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et lorem dolor",
+      "score": 4.9,
+      "off": 0,
+      "type": "cold",
+      "img": "/images/menu-6.jpeg"
     }
   ],
   "services": [
     {
-      "id": "1",
-      "title": "faster door delivery",
+      "id": 1,
+      "title": "Fastest Door Delivery",
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "img": "/images/service-1.jpg",
-      "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faTruck"
     },
     {
-      "id": "2",
-      "title": "url id is my own",
+      "id": 2,
+      "title": "Best Quality Coffee",
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "img": "/images/service-2.jpg",
-      "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faCoffee"
     },
     {
-      "id": "3",
-      "title": "Best Quality coffee",
+      "id": 3,
+      "title": "Best Quality Coffee",
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "img": "/images/service-3.jpg",
-      "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faAward"
     },
     {
-      "id": "4",
+      "id": 4,
       "title": "Online Table Booking",
+      "desc": "Sit lorem ipsum et diam elitr est dolor sed duo. Guberg sea et et lorem dolor sed est sit invidunt, dolore tempor diam ipsum takima erat tempor",
       "img": "/images/service-4.jpg",
-      "desc": "sit lorem ipsum et diam elitr est dolor sed duo guberg sea er et lorem dolor",
       "icon": "faTable"
     }
   ],
-  "newsLetters": [
+  "newsletters": [
     {
-      "id": "1",
+      "id": 2,
       "email": "amin@gmail.com"
     },
     {
-      "id": "2",
-      "email": "qadir@gmail.com"
-    },
-    {
-      "email": "andromedaa5692@gmail.com",
-      "id": "SpNCaA6vP30"
+      "id": 1,
+      "email": "amin@gmail.com"
     }
   ],
   "comments": [
     {
-      "id": "1",
+      "id": 1,
       "username": "Q_Yolme",
-      "body": "perfect coffee",
-      "productId": 1,
-      "score": 5
+      "productID": 1,
+      "body": "Wonderful coffee ❤️",
+      "profile": "/images/testimonial-1.jpg"
     },
     {
-      "id": "2",
-      "username": "amin_saeedi",
-      "body": "oh my god coffee",
-      "productId": 2,
-      "score": 4.5
+      "id": 2,
+      "username": "Amin Saeedi",
+      "productID": 2,
+      "body": "Perfect coffee 🙋‍♂️❤️",
+      "profile": "/images/testimonial-2.jpg"
+    },
+    {
+      "id": 3,
+      "username": "Sasan Moqaddas",
+      "productID": 1,
+      "body": "Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita",
+      "profile": "/images/testimonial-3.jpg"
+    },
+    {
+      "id": 4,
+      "username": "Alireza Rezaei",
+      "productID": 2,
+      "body": "Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita",
+      "profile": "/images/testimonial-4.jpg"
+    },
+    {
+      "id": 5,
+      "username": "Mmd Mohammadi",
+      "productID": 1,
+      "body": "Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita",
+      "profile": "/images/testimonial-4.jpg"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "messages": [
+    {
+      "id": 1,
+      "username": "amin",
+      "email": "amin@gmail.com",
+      "subject": "React Native Course",
+      "body": "Please teach react native course"
+    }
+  ],
+  "reserve": [
+    {
+      "id": 1
+    }
+  ]
 }
