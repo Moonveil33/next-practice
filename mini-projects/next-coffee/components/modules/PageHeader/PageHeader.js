@@ -9,7 +9,7 @@ function PageHeader({ route }) {
         style={{ minHeight: "400px" }}
       >
         <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">
-          {route}
+          <Link href={`/${route}`}>{route}</Link>
         </h1>
         <div class="d-inline-flex mb-lg-5">
           <p class="m-0 text-white">
