@@ -1,7 +1,12 @@
+import PageHeader from "@/components/modules/PageHeader/PageHeader";
 import React from "react";
 
 function Search() {
-  return <div>Search Result page :))</div>;
+  return (
+    <>
+      <PageHeader route="Search" />
+    </>
+  );
 }
 
 export default Search;
