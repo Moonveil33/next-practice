@@ -1,5 +1,15 @@
 import React from "react";
 
+// Fake Database
+
+const users = [
+  {
+    username: "erfan._b7",
+    email: "root.alireza.shadow@gmail.com",
+    password: "oopYujin123",
+  },
+];
+
 function handler(req, res) {
   switch (req.method) {
     case "GET": {
@@ -8,7 +18,12 @@ function handler(req, res) {
     }
 
     case "POST": {
-      return res.json({ message: "user created successfully" });
+      //   console.log(req.body);
+
+      const { username, email, password } = req.body;
+      users.push({ username, email, password });
+
+      return res.json({ message: "user created successfully", data: users });
       break;
     }
 
