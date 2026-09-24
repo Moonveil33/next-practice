@@ -1,15 +1,34 @@
 import React from "react";
 import users from "@/data/db";
+import fs from "node:fs";
+import path from "node:path";
 
 function handler(req, res) {
+  console.log(req.method);
+  console.log(req.body);
+
   switch (req.method) {
     case "GET": {
-      return res.json(users);
+      const dbPath = path.join(process.cwd(), "data", "db.json");
+
+      const data = fs.readFileSync(dbPath);
+
+      const parsedData = JSON.parse(data);
+
+      return res.json(parsedData.users);
       break;
     }
 
     case "POST": {
-      return res.json({ message: "user created successfully" });
+      const { username, email, password } = req.body;
+
+      users.push({ username, email, password });
+      console.log(users);
+
+      return res
+        .status(201)
+        .json({ message: "User Created Successfully", data: users });
+
       break;
     }
 
