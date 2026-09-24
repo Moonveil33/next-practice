@@ -1,0 +1,28 @@
+const users = [
+  {
+    id: 1,
+    username: "erfan",
+    email: "erf@gmail.com",
+    password: "123456",
+  },
+  {
+    id: 2,
+    username: "alireza",
+    email: "alireza@gmail.com",
+    password: "qwerttyyu",
+  },
+  {
+    id: 3,
+    username: "bahar",
+    email: "bahar@gmail.com",
+    password: "bddffd",
+  },
+  {
+    id: 4,
+    username: "shabnam",
+    email: "shabnam@gmail.com",
+    password: "qwetrtrertt677667yyu",
+  },
+];
+
+export default users;
