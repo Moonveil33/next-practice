@@ -48,10 +48,6 @@ function handler(req, res) {
       return res.json({ message: "user replace successfully" });
     }
 
-    case "DELETE": {
-      res.json({ message: "user Removed Successfully" });
-    }
-
     default: {
       res.json({
         message: "welcome",
