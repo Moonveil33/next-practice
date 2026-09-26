@@ -22,14 +22,26 @@ function handler(req, res) {
     case "POST": {
       const { username, email, password } = req.body;
 
-      users.push({ username, email, password });
-      console.log(users);
+      const dbPath = path.join(process.cwd(), "data", "db.json");
 
-      return res
-        .status(201)
-        .json({ message: "User Created Successfully", data: users });
+      const data = fs.readFileSync(dbPath);
 
-      break;
+      const parsedData = JSON.parse(data);
+
+      parsedData.users.push({
+        id: crypto.randomUUID(),
+        username,
+        email,
+        password,
+      });
+
+      const err = fs.writeFileSync(dbPath, JSON.stringify(parsedData));
+      if (err) {
+        // Response Code ...
+      } else {
+        res.status(201).json({ message: "User Registered SuccessFully" });
+        break;
+      }
     }
 
     case "PUT": {
