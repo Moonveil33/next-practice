@@ -6,6 +6,12 @@ function handler(req, res) {
     case "POST": {
       const { username, email, password } = req.body;
 
+      if (!username.trim() || !email.trim() || !password.trim()) {
+        return res.status(422).json({
+          message: "Data is Not Valid",
+        });
+      }
+
       const dbPath = path.join(process.cwd(), "data", "db.json");
 
       const data = fs.readFileSync(dbPath);

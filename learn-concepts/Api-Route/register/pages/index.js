@@ -8,6 +8,10 @@ export default function Home() {
   const registerHandler = async (e) => {
     e.preventDefault();
 
+    if (!username.trim() || !email.trim() || !password.trim()) {
+      return alert("Data Is Not valid");
+    }
+
     const newUser = {
       username,
       email,
