@@ -3,10 +3,14 @@ import users from "@/data/db";
 import fs from "node:fs";
 import path from "node:path";
 
-function handler(req, res) {
-  console.log(req.method);
-  console.log(req.body);
+import connectToDB from "@/utils/db";
+import usersModel from "@/models/user";
 
+async function handler(req, res) {
+  // console.log(req.method);
+  // console.log(req.body);
+
+  connectToDB();
   switch (req.method) {
     case "GET": {
       const dbPath = path.join(process.cwd(), "data", "db.json");
@@ -22,26 +26,38 @@ function handler(req, res) {
     case "POST": {
       const { username, email, password } = req.body;
 
-      const dbPath = path.join(process.cwd(), "data", "db.json");
+      const user = await usersModel.create({ username, email, password });
 
-      const data = fs.readFileSync(dbPath);
+      console.log(user);
 
-      const parsedData = JSON.parse(data);
-
-      parsedData.users.push({
-        id: crypto.randomUUID(),
-        username,
-        email,
-        password,
-      });
-
-      const err = fs.writeFileSync(dbPath, JSON.stringify(parsedData));
-      if (err) {
-        // Response Code ...
+      if (user) {
+        return res.status(201).json({
+          message: "User Registred successfully",
+        });
       } else {
-        res.status(201).json({ message: "User Registered SuccessFully" });
-        break;
+        return res.status(409).json({ message: "Unknown Error !!" });
       }
+
+      // const dbPath = path.join(process.cwd(), "data", "db.json");
+
+      // const data = fs.readFileSync(dbPath);
+
+      // const parsedData = JSON.parse(data);
+
+      // parsedData.users.push({
+      //   id: crypto.randomUUID(),
+      //   username,
+      //   email,
+      //   password,
+      // });
+
+      // const err = fs.writeFileSync(dbPath, JSON.stringify(parsedData));
+      // if (err) {
+      //   // Response Code ...
+      // } else {
+      //   res.status(201).json({ message: "User Registered SuccessFully" });
+      //   break;
+      // }
     }
 
     case "PUT": {

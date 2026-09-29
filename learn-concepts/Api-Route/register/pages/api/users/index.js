@@ -1,40 +1,48 @@
+import React from "react";
+import users from "@/data/db";
 import fs from "node:fs";
 import path from "node:path";
 
-function handler(req, res) {
+import connectToDB from "@/utils/db";
+import usersModel from "@/models/user";
+
+async function handler(req, res) {
+  // console.log(req.method);
+  // console.log(req.body);
+
+  connectToDB();
   switch (req.method) {
-    case "POST": {
-      const { username, email, password } = req.body;
-
-      if (!username.trim() || !email.trim() || !password.trim()) {
-        return res.status(422).json({
-          message: "Data is Not Valid",
-        });
-      }
-
+    case "GET": {
       const dbPath = path.join(process.cwd(), "data", "db.json");
 
       const data = fs.readFileSync(dbPath);
 
       const parsedData = JSON.parse(data);
 
-      parsedData.users.push({
-        id: crypto.randomUUID(),
-        username,
-        email,
-        password,
-      });
+      return res.json(parsedData.users);
+      break;
+    }
 
-      const err = fs.writeFileSync(dbPath, JSON.stringify(parsedData));
+    case "POST": {
+      const { username, email, password } = req.body;
 
-      if (err) {
-        return res.status(400).json({ message: "Error Occurd" });
-        break;
+      const user = await usersModel.create({ username, email, password });
+
+      console.log(user);
+
+      if (user) {
+        return res.status(201).json({
+          message: "User Registred successfully",
+        });
       } else {
-        return res.status(201).json({ message: "user created Successfully" });
-        break;
+        return res.status(409).json({ message: "Unknown Error !!" });
       }
     }
+
+    case "PUT": {
+      return res.json({ message: "user replace successfully" });
+    }
+
     default: {
       res.json({
         message: "welcome",
