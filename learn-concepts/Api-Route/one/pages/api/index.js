@@ -1,10 +1,8 @@
-const mongoose = require("mongoose");
-const handler = (req, res) => {
-  mongoose
-    .connect("mongodb://127.0.0.1:27017/next-db")
-    .then(() => console.log("Connected To DB Successfully"))
-    .catch((err) => console.log("error in db"));
+require("./../../utils/db");
+import connectToDB from "./../../utils/db";
 
+const handler = (req, res) => {
+  connectToDB();
   return res.json({ message: "Home Page" });
 };
 
