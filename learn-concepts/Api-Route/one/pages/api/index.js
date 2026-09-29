@@ -1,46 +1,11 @@
-import React from "react";
+const mongoose = require("mongoose");
+const handler = (req, res) => {
+  mongoose
+    .connect("mongodb://127.0.0.1:27017/next-db")
+    .then(() => console.log("Connected To DB Successfully"))
+    .catch((err) => console.log("error in db"));
 
-// Fake Database
-
-const users = [
-  {
-    username: "erfan._b7",
-    email: "root.alireza.shadow@gmail.com",
-    password: "oopYujin123",
-  },
-];
-
-function handler(req, res) {
-  switch (req.method) {
-    case "GET": {
-      return res.json({ message: "Welcome To index Page" });
-      break;
-    }
-
-    case "POST": {
-      //   console.log(req.body);
-
-      const { username, email, password } = req.body;
-      users.push({ username, email, password });
-
-      return res.json({ message: "user created successfully", data: users });
-      break;
-    }
-
-    case "PUT": {
-      return res.json({ message: "user replace successfully" });
-    }
-
-    case "DELETE": {
-      res.json({ message: "user Removed Successfully" });
-    }
-
-    default: {
-      res.json({
-        message: "welcome",
-      });
-    }
-  }
-}
+  return res.json({ message: "Home Page" });
+};
 
 export default handler;
