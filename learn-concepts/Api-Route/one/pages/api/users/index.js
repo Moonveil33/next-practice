@@ -5,6 +5,7 @@ import path from "node:path";
 
 import connectToDB from "@/utils/db";
 import usersModel from "@/models/user";
+import mongoose from "mongoose";
 
 async function handler(req, res) {
   // console.log(req.method);
@@ -43,7 +44,7 @@ async function handler(req, res) {
       // const data = fs.readFileSync(dbPath);
 
       // const parsedData = JSON.parse(data);
-
+  
       // parsedData.users.push({
       //   id: crypto.randomUUID(),
       //   username,
@@ -57,8 +58,11 @@ async function handler(req, res) {
       // } else {
       //   res.status(201).json({ message: "User Registered SuccessFully" });
       //   break;
-      // }
+      // }  
     }
+
+
+    
 
     case "PUT": {
       return res.json({ message: "user replace successfully" });
