@@ -3,6 +3,7 @@ import path from "path";
 import fs from "node:fs";
 import usersModel from "@/models/user";
 import connectToDB from "@/utils/db";
+import { isValidObjectId } from "mongoose";
 
 const handler = async (req, res) => {
   connectToDB();
@@ -20,9 +21,13 @@ const handler = async (req, res) => {
   } else if (req.method === "DELETE") {
     const { id } = req.query;
 
-    const deletedUser = await usersModel.findOneAndDelete({ _id: id });
-    if (deletedUser) {
-      return res.status(200).json({ message: "user removed Successfully" });
+    if (isValidObjectId(id)) {
+      const deletedUser = await usersModel.findOneAndDelete({ _id: id });
+      if (deletedUser) {
+        return res.status(200).json({ message: "user removed Successfully" });
+      }
+    } else {
+      return res.status(422).json({ message: "user id is not valid" });
     }
   } else if (req.method === "PUT") {
     const { id } = req.query;
