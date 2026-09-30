@@ -1,6 +1,8 @@
 import { useState } from "react";
+import usersModel from "@/models/user";
+import connectToDB from "@/utils/db";
 
-export default function Home() {
+export default function Home({ users }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,12 +62,24 @@ export default function Home() {
         />
         <button onClick={registerHandler}> Register </button>
       </div>
+
+      <div>
+        <ul>
+          {users.map((user) => (
+            <li>{user.username}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
 
 export async function getStaticProps() {
+  connectToDB();
+  const users = await usersModel.find({});
   return {
-    props: {},
+    props: {
+      users: JSON.parse(JSON.stringify(users)),
+    },
   };
 }
