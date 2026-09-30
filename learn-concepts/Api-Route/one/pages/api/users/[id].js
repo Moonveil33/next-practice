@@ -2,8 +2,11 @@ import users from "@/data/db";
 import path from "path";
 import fs from "node:fs";
 import usersModel from "@/models/user";
+import connectToDB from "@/utils/db";
 
 const handler = async (req, res) => {
+  connectToDB();
+
   if (req.method === "GET") {
     const { id } = req.query;
     // const user = await usersModel.find({_id: id})
@@ -17,33 +20,9 @@ const handler = async (req, res) => {
   } else if (req.method === "DELETE") {
     const { id } = req.query;
 
-    const dbPath = path.join(process.cwd(), "data", "db.json");
-
-    const data = fs.readFileSync(dbPath);
-
-    const parsedData = JSON.parse(data);
-
-    const isUser = parsedData.users.some(
-      (user) => String(user.id) === String(id),
-    );
-
-    if (isUser) {
-      const filterredUsers = parsedData.users.filter(
-        (user) => String(user.id) !== String(id),
-      );
-
-      const err = fs.writeFileSync(
-        dbPath,
-        JSON.stringify({ ...parsedData, users: filterredUsers }),
-      );
-
-      if (err) {
-        // return res.json()
-      } else {
-        return res.json({ message: "user removed Successfully" });
-      }
-    } else {
-      return res.status(404).json({ message: "user not found" });
+    const deletedUser = await usersModel.findOneAndDelete({ _id: id });
+    if (deletedUser) {
+      return res.status(200).json({ message: "user removed Successfully" });
     }
   } else if (req.method === "PUT") {
     const { id } = req.query;
