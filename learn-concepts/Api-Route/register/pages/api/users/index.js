@@ -26,6 +26,10 @@ async function handler(req, res) {
     case "POST": {
       const { username, email, password } = req.body;
 
+      if (username.length < 3 || !email.trim() || password.length < 8) {
+        return res.status(422).json({ message: "Data is Not Valid" });
+      }
+
       const user = await usersModel.create({ username, email, password });
 
       console.log(user);
