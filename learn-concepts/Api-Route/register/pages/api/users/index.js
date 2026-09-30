@@ -13,13 +13,8 @@ async function handler(req, res) {
   connectToDB();
   switch (req.method) {
     case "GET": {
-      const dbPath = path.join(process.cwd(), "data", "db.json");
-
-      const data = fs.readFileSync(dbPath);
-
-      const parsedData = JSON.parse(data);
-
-      return res.json(parsedData.users);
+      const users = await usersModel.find();
+      res.json(users);
       break;
     }
 
