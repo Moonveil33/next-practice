@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "@/styles/Modal.module.css";
 import { useState } from "react";
+import swal from "sweetalert";
 
 const AddCourseModal = ({ hideAddCourseModal }) => {
   const [title, setTitle] = useState("");
@@ -23,6 +24,11 @@ const AddCourseModal = ({ hideAddCourseModal }) => {
     });
 
     if (res.status === 201) {
+      swal({
+        title: "دوره مورد نظر با موفقیت ثبت شد",
+        icon: "success",
+        buttons: "اوکی",
+      });
       console.log("Course created successfully");
       setTitle("");
       hideAddCourseModal();
