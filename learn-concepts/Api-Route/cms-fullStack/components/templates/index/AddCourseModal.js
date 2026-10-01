@@ -27,7 +27,7 @@ const AddCourseModal = ({ hideAddCourseModal }) => {
       swal({
         title: "دوره مورد نظر با موفقیت ثبت شد",
         icon: "success",
-        buttons: "اوکی",
+        buttons: "باشه",
       });
       console.log("Course created successfully");
       setTitle("");
