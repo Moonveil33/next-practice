@@ -10,7 +10,9 @@ const CoursesItem = ({ title, _id }) => {
   const hideDeleteModal = () => setShowDeleteModal(false);
 
   const removeCourse = async () => {
-    const res = await fetch(`/api/courses/${_id}`);
+    const res = await fetch(`/api/courses/${_id}`, {
+      method: "DELETE",
+    });
     const data = await res.json();
     if (res.status === 200) {
       setShowDeleteModal(false);
