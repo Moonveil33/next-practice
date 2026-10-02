@@ -3,10 +3,20 @@ import { useState } from "react";
 import AddCourseModal from "./AddCourseModal";
 import styles from "@/styles/Course.module.css";
 
-const Course = ({ data }) => {
+const Course = ({ courses }) => {
   const [showAddCourseModal, setShowAddCourseModal] = useState(false);
 
   const hideAddCourseModal = () => setShowAddCourseModal(false);
+
+  const [data, setData] = useState([...courses]);
+  const getCourses = async () => {
+    const res = await fetch("/api/courses");
+    const coursesData = await res.json();
+
+    if (res.status === 200) {
+      setData(coursesData);
+    }
+  };
 
   return (
     <>
@@ -29,7 +39,10 @@ const Course = ({ data }) => {
       </section>
 
       {showAddCourseModal && (
-        <AddCourseModal hideAddCourseModal={hideAddCourseModal} />
+        <AddCourseModal
+          getCourses={getCourses}
+          hideAddCourseModal={hideAddCourseModal}
+        />
       )}
     </>
   );

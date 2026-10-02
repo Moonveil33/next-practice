@@ -3,7 +3,7 @@ import connectToDB from "@/utils/db";
 import coursesModel from "@/models/course";
 
 const index = ({ courses }) => {
-  return <Courses data={courses} />;
+  return <Courses courses={courses} />;
 };
 
 export async function getStaticProps(context) {

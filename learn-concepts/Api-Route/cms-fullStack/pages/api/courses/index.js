@@ -19,6 +19,9 @@ const handler = async (req, res) => {
     } catch (err) {
       return res.status(500).json({ message: "server error 500" });
     }
+  } else if (req.method === "GET") {
+    const courses = await coursesModel.find({});
+    return res.json(courses);
   }
 };
 
