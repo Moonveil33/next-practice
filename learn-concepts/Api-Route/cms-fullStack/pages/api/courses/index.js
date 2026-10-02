@@ -20,8 +20,19 @@ const handler = async (req, res) => {
       return res.status(500).json({ message: "server error 500" });
     }
   } else if (req.method === "GET") {
-    const courses = await coursesModel.find({});
-    return res.json(courses);
+    console.log(req.query.q);
+    if (req.query.q) {
+      const { q } = req.query;
+      const courses = await coursesModel.find({
+        title: {
+          $regex: q,
+        },
+      });
+      res.json(courses);
+    } else {
+      const courses = await coursesModel.find({});
+      return res.json(courses);
+    }
   }
 };
 
