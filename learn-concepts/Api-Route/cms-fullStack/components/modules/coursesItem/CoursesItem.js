@@ -2,6 +2,7 @@ import DeleteModal from "@/components/templates/index/DeleteModal";
 import EditModal from "@/components/templates/index/EditModal";
 import { useState } from "react";
 import styles from "@/styles/Course.module.css";
+import { faDesktop } from "@fortawesome/free-solid-svg-icons";
 const CoursesItem = ({ title, _id }) => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -20,6 +21,26 @@ const CoursesItem = ({ title, _id }) => {
         title: `دوره ${title} با موفقیت حذف شد`,
         icon: "success",
         buttons: "باشه",
+      });
+    }
+  };
+
+  const updateCourse = async (event, title) => {
+    event.preventDefault();
+    const res = await fetch(`/api/courses/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title }),
+    });
+
+    if (res.status === 200) {
+      setShowEditModal(false);
+      swal({
+        title: "دوره مورد نظر با موفقیت ویرایش شد",
+        icon: "success",
+        buttons: "اوکی",
       });
     }
   };
@@ -54,7 +75,9 @@ const CoursesItem = ({ title, _id }) => {
           </a>
         </div>
       </li>
-      {showEditModal && <EditModal hideEditModal={hideEditModal} />}
+      {showEditModal && (
+        <EditModal updateHandler={updateCourse} hideEditModal={hideEditModal} />
+      )}
       {showDeleteModal && (
         <DeleteModal
           removeHandler={removeCourse}
