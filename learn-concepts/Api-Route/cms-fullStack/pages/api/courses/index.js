@@ -5,7 +5,7 @@ const handler = async (req, res) => {
   connectToDB();
   if (req.method === "POST") {
     try {
-      const { title, price } = req.body;
+      const { title, price, teacher } = req.body;
 
       if (!title.trim() || title.length < 4) {
         return res.status(422).json({ message: "title is not valid" });
@@ -14,6 +14,7 @@ const handler = async (req, res) => {
       const course = await coursesModel.create({
         title,
         price,
+        teacher,
       });
 
       return res.status(201).json({ message: "Course created Successfully" });

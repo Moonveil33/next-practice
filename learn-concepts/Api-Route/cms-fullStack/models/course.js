@@ -20,6 +20,11 @@ const schema = new mongoose.Schema(
       min: 0,
       max: 10000000,
     },
+    teacher: {
+      type: mongoose.Types.ObjectId,
+      ref: "Teacher",
+      required: true,
+    },
   },
   { timestamps: true },
 );
