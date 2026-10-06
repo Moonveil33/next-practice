@@ -5,14 +5,15 @@ const handler = async (req, res) => {
   connectToDB();
   if (req.method === "POST") {
     try {
-      const { title } = req.body;
+      const { title, price } = req.body;
 
-      if (!title.trim() || title.length < 5) {
+      if (!title.trim() || title.length < 4) {
         return res.status(422).json({ message: "title is not valid" });
       }
 
       const course = await coursesModel.create({
         title,
+        price,
       });
 
       return res.status(201).json({ message: "Course created Successfully" });

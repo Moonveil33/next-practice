@@ -1,11 +1,28 @@
 const mongoose = require("mongoose");
 
-const schema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
+const schema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      minLength: 4,
+      maxLength: 20,
+      index: true,
+      unique: true,
+      // match
+      // lowercase: true,
+      // uppercase: true
+    },
+    price: {
+      type: Number,
+      required: false,
+      default: 0,
+      min: 0,
+      max: 10000000,
+    },
   },
-});
+  { timestamps: true },
+);
 
 const model = mongoose.models.Course || mongoose.model("Course", schema);
 export default model;
