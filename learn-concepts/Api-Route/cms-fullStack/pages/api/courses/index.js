@@ -32,7 +32,9 @@ const handler = async (req, res) => {
       });
       res.json(courses);
     } else {
-      const courses = await coursesModel.find({});
+      const courses = await coursesModel
+        .find({}, "-__v -updatedAt")
+        .populate("teacher", "name");
       return res.json(courses);
     }
   }

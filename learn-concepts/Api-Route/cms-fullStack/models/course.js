@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const teachersModel = require("./teacher");
 
 const schema = new mongoose.Schema(
   {
