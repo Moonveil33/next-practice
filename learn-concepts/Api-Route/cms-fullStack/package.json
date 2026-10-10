@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "fastest-validator": "^1.19.1",
     "mongoose": "^9.10.3",
     "next": "latest",
     "react": "latest",

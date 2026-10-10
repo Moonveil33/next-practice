@@ -1,10 +1,18 @@
 import connectToDB from "@/utils/db";
 import coursesModel from "@/models/course";
 import teachersModel from "@/models/teacher";
+import courseValidator from "@/validators/course";
 
 const handler = async (req, res) => {
   connectToDB();
   if (req.method === "POST") {
+    const validationResult = courseValidator(req.body);
+
+    console.log(validationResult);
+
+    if (validationResult !== true) {
+      return res.status(422).json(validationResult);
+    }
     try {
       const { title, price, teacher } = req.body;
 
@@ -13,7 +21,7 @@ const handler = async (req, res) => {
       }
       const mainTeacher = await teachersModel.findOne({ _id: teacher });
 
-      const course = await coursesModel.create({
+      await coursesModel.create({
         title,
         price,
         teacher: mainTeacher,
