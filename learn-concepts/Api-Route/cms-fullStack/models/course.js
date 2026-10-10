@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const teachersModel = require("./teacher");
+const { schema: teacherSchema } = require("./teacher");
 
 const schema = new mongoose.Schema(
   {
@@ -21,9 +22,13 @@ const schema = new mongoose.Schema(
       min: 0,
       max: 10000000,
     },
+    // teacher: {
+    //   type: mongoose.Types.ObjectId,
+    //   ref: "Teacher",
+    //   required: true,
+    // },
     teacher: {
-      type: mongoose.Types.ObjectId,
-      ref: "Teacher",
+      type: teacherSchema,
       required: true,
     },
   },

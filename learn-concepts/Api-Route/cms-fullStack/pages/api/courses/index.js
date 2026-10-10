@@ -1,5 +1,6 @@
 import connectToDB from "@/utils/db";
 import coursesModel from "@/models/course";
+import teachersModel from "@/models/teacher";
 
 const handler = async (req, res) => {
   connectToDB();
@@ -10,11 +11,12 @@ const handler = async (req, res) => {
       if (!title.trim() || title.length < 4) {
         return res.status(422).json({ message: "title is not valid" });
       }
+      const mainTeacher = await teachersModel.findOne({ _id: teacher });
 
       const course = await coursesModel.create({
         title,
         price,
-        teacher,
+        teacher: mainTeacher,
       });
 
       return res.status(201).json({ message: "Course created Successfully" });
