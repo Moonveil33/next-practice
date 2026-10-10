@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const teachersModel = require("./teacher");
 const { schema: teacherSchema } = require("./teacher");
-
+const commentsModel = require("./comment");
 const schema = new mongoose.Schema(
   {
     title: {
@@ -34,6 +34,12 @@ const schema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+schema.virtual("comments", {
+  ref: "Comment",
+  localField: "_id",
+  foreignField: "course",
+});
 
 const model = mongoose.models.Course || mongoose.model("Course", schema);
 

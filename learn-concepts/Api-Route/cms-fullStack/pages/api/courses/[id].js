@@ -36,6 +36,16 @@ const handler = async (req, res) => {
     } else {
       return res.status(422).json({ message: "Course ID is not Valid !!" });
     }
+  } else if (req.method === "GET") {
+    const { id } = req.query;
+
+    const course = await coursesModel
+      .findOne({
+        _id: id,
+      })
+      .populate("comments")
+      .lean();
+    return res.json(course);
   }
 };
 
