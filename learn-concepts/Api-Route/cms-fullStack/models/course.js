@@ -36,4 +36,5 @@ const schema = new mongoose.Schema(
 );
 
 const model = mongoose.models.Course || mongoose.model("Course", schema);
+
 export default model;
