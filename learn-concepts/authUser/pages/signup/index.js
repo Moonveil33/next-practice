@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 function Index() {
+  const router = useRouter();
+
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
@@ -24,6 +27,9 @@ function Index() {
       setUsername("");
       setEmail("");
       setPassword("");
+
+      alert("registered successfully");
+      router.replace("/dashboard");
     }
   };
 
