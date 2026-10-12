@@ -1,5 +1,6 @@
 import userModel from "@/models/User";
 import connectToDB from "@/configs/db";
+import { hashPassword, generateToken } from "@/utils/auth";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {
@@ -22,8 +23,22 @@ const handler = async (req, res) => {
     }
 
     // isUserExist
+
+    const isUserExist = await userModel.findOne({
+      $or: [{ username }, { email }],
+    });
+
+    if (isUserExist) {
+      return res
+        .status(422)
+        .json({ message: "This username or email exist already" });
+    }
+
     // HashPassword
+    const hashedPassword = await hashPassword(password);
+
     // Generate Token
+    const token = generateToken({ email });
     // Create
 
     await userModel.create({
@@ -31,11 +46,13 @@ const handler = async (req, res) => {
       lastname,
       username,
       email,
-      password,
+      password: hashedPassword,
       role: "USER",
     });
 
-    return res.status(201).json({ message: "User Created Successfully :))" });
+    return res
+      .status(201)
+      .json({ message: "User Created Successfully :))" }, token);
   } catch (err) {
     return res.status(500).json({ message: "Unknown Internal Server Error" });
   }
