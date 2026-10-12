@@ -1,6 +1,7 @@
 import userModel from "@/models/User";
 import connectToDB from "@/configs/db";
 import { hashPassword, generateToken } from "@/utils/auth";
+import { serialize } from "cookie";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {
@@ -41,16 +42,26 @@ const handler = async (req, res) => {
     const token = generateToken({ email });
     // Create
 
+    const users = await userModel.find({});
+
     await userModel.create({
       firstname,
       lastname,
       username,
       email,
       password: hashedPassword,
-      role: "USER",
+      role: users.length > 0 ? "USER" : "ADMIN",
     });
 
     return res
+      .setHeader(
+        "Set-Cookie",
+        serialize("token", token, {
+          httpOnly: true,
+          path: "/",
+          maxAge: 60 * 60 * 24,
+        }),
+      )
       .status(201)
       .json({ message: "User Created Successfully :))" }, token);
   } catch (err) {
