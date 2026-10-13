@@ -42,7 +42,6 @@ export async function getServerSideProps(context) {
     },
     "-_id firstname lastname",
   );
-  console.log(user);
 
   return {
     props: {
