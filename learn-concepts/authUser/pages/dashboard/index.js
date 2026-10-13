@@ -20,8 +20,8 @@ export async function getServerSideProps(context) {
     };
   }
 
-  const isValidToken = verifyToken(token);
-  if (!isValidToken) {
+  const tokenPayload = verifyToken(token);
+  if (!tokenPayload) {
     return {
       redirect: {
         destination: "/signin",
