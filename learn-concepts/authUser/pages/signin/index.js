@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 function Index() {
@@ -48,7 +49,7 @@ function Index() {
           <input
             type="password"
             value={password}
-            onChange={(event) => setIdentifier(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             autoComplete="off"
             required
           />
