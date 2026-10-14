@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -13,53 +13,65 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Index() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const userAuth = async () => {
+      const res = await fetch("/api/auth/me");
+      if (res.status === 200) {
+        setIsLoggedIn(true); // just we need check login in home page
+      }
+    };
+    userAuth();
+  }, []);
+
   return (
     <div className="container">
       <aside className="sidebar">
         <h3 className="sidebar-title">Sidebar</h3>
 
         <ul className="sidebar-links">
-          <>
-            {/* User is login */}
-            <li>
-              <Link href="/dashboard">
-                <span>
-                  <FontAwesomeIcon icon={faBars} />
-                </span>
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <span>
-                  <FontAwesomeIcon icon={faSignOut} />
-                </span>
-                Logout
-              </Link>
-            </li>
-            {/* User is login */}
-          </>
-          <>
-            {/* User not login */}
-            <li>
-              <Link href="/signin">
-                <span>
-                  <FontAwesomeIcon icon={faSignIn} />
-                </span>
-                Sign in
-              </Link>
-            </li>
-            <li>
-              <Link href="/signup">
-                <span>
-                  <FontAwesomeIcon icon={faSignIn} />
-                </span>
-                Sign up
-              </Link>
-            </li>
-            {/* User not login */}
-          </>
-          {/* User is login & admin */}
+          {isLoggedIn ? (
+            <>
+              {" "}
+              <li>
+                <Link href="/dashboard">
+                  <span>
+                    <FontAwesomeIcon icon={faBars} />
+                  </span>
+                  Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link href="#">
+                  <span>
+                    <FontAwesomeIcon icon={faSignOut} />
+                  </span>
+                  Logout
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              {" "}
+              <li>
+                <Link href="/signin">
+                  <span>
+                    <FontAwesomeIcon icon={faSignIn} />
+                  </span>
+                  Sign in
+                </Link>
+              </li>
+              <li>
+                <Link href="/signup">
+                  <span>
+                    <FontAwesomeIcon icon={faSignIn} />
+                  </span>
+                  Sign up
+                </Link>
+              </li>
+            </>
+          )}
+
           <li>
             <Link href="/p-admin">
               <span>

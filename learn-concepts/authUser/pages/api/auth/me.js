@@ -1,5 +1,6 @@
 import connectToDB from "@/configs/db";
 import { verifyToken } from "@/utils/auth";
+import UserModel from "@/models/User";
 
 const handler = async (req, res) => {
   if (req.method !== "GET") {
