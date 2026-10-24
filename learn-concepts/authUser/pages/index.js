@@ -88,6 +88,7 @@ function Index() {
             </li>
           )}
         </ul>
+
         <img className="wave" src="/Images/wave.svg" alt="wave" />
       </aside>
       <main className="main"></main>
