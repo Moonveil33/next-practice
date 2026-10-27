@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const DashboardLayout = ({ children }) => {
-  const user = null;
+  const user = "s";
   if (!user) {
     redirect("/");
   }
