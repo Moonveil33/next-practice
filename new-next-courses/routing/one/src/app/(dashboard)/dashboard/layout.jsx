@@ -1,10 +1,12 @@
-import { redirect } from "next/navigation";
+import { forbidden, redirect } from "next/navigation";
 import React from "react";
 
 const DashboardLayout = ({ children }) => {
-  const user = "s";
+  const user = null;
   if (!user) {
-    redirect("/");
+    // redirect("/");
+    // notFound();
+    forbidden();
   }
 
   return (
